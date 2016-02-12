@@ -17,7 +17,7 @@ post '/tweets' do
   @tweet = Tweet.new(body: params[:body], user_id: session[:id] )
   if @tweet
     @tweet.save
-    redirect "/users/show"
+    redirect "/users/#{session[:id]}"
   else
     redirect "/tweets/new"
   end
@@ -26,5 +26,5 @@ end
 delete '/tweets/:id' do
   @tweet = Tweet.find(params[:id])
   @tweet.destroy
-  redirect 'users/show'
+  redirect "/users/#{session[:id]}"
 end

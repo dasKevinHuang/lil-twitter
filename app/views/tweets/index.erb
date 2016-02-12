@@ -1,1 +1,16 @@
-# This page displays all tweets
+
+<a href="/sessions">Back to Profile</a>
+
+<h1> Follow Whats Happening On Twitter </h1>
+
+<% @sorted_tweets.each do |each_tweet| %>
+<ul>
+ user: <%=each_tweet.user.username %>   <a href="#">Follow this User</a>
+<br>
+  tweet: <%=each_tweet.body%> <a href="#">Retweet</a>
+<br>
+
+
+
+</ul>
+  <% end %>

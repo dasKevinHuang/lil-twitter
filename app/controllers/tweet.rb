@@ -1,6 +1,7 @@
 
 # To display all tweets of ALL users
 get '/tweets' do
+  @user_id = session[:id]
   @tweets = Tweet.all
   @sorted_tweets = @tweets.sort {|first, second| first.created_at <=> second.created_at }
 
@@ -16,8 +17,14 @@ post '/tweets' do
   @tweet = Tweet.new(body: params[:body], user_id: session[:id] )
   if @tweet
     @tweet.save
-    redirect "/user/#{@user.id}"
+    redirect "/users/show"
   else
     redirect "/tweets/new"
   end
+end
+
+delete '/tweets/:id' do
+  @tweet = Tweet.find(params[:id])
+  @tweet.destroy
+  redirect 'users/show'
 end

@@ -1,5 +1,5 @@
 <div class="container">
-<a href="/sessions">Back to Profile</a>
+<a href="/users/<%=@user_id%>">Back to Profile</a>
 
 <h1> Follow Whats Happening On Twitter </h1>
 
@@ -8,7 +8,9 @@
        <div class='container'>
         <span><a href="users/<%=tweet.user.id%>"><b><%= tweet.user.first_name + " " + tweet.user.last_name %></b> @<%= tweet.user.username %></a></span>
         <span><a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a></span>
-    <a href="#">Follow this User</a>
+    <form action="/users/<%=tweet.user.id%>/followers" method="POST">
+                                          <input type="submit" value="Follow this User">
+    </form>
 <br>
   tweet: <%=tweet.body%> <a href="#">Retweet</a>
 <br>

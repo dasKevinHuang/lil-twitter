@@ -16,7 +16,7 @@ end
 
 #dsisplay all tweets of user
 get '/users/:id' do
-  @user = User.find(params[:id])
+  @user = User.find(session[:id])
   @tweets = @user.tweets
   erb :'users/show'
 end
@@ -31,4 +31,14 @@ end
 get '/users' do
   @users = User.all
   erb :'users/all'
+end
+
+post '/users/:id/followers' do
+  user  = User.find(session[:id])
+  followed_user = User.find(params[:id])
+
+  if followed_user.followers << user
+
+  redirect "/users"
+end
 end

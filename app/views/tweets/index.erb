@@ -1,14 +1,17 @@
 
 <a href="/users/<%=@user_id%>">Back to Profile</a>
 
-<h1> Follow Whats Happening On Twitter </h1>
+<h1 class="text-white"> Follow Whats Happening On Twitter </h1>
 
 <% @sorted_tweets.each do |each_tweet| %>
-<ul>
- user: <%=each_tweet.user.username %>   <form action="/users/<%=each_tweet.user.id%>/followers" method="POST">
+<ul class="text-white">
+ user: <%=each_tweet.user.username %>   <form class="button_class" action="/users/<%=each_tweet.user.id%>/followers" method="POST">
                                           <input type="submit" value="Follow this User">
+                                        </form>
 <br>
-  tweet: <%=each_tweet.body%> <a href="#">Retweet</a>
+  tweet: <%=each_tweet.body%> <form action="/users/<%=each_tweet.id%>/tweets" method="POST">
+      <input type="submit" value="Retweet">
+</form>
 <br>
 
 

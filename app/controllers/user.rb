@@ -39,6 +39,19 @@ post '/users/:id/followers' do
 
   if followed_user.followers << user
 
-  redirect "/users"
+  redirect "/dashboard"
 end
+end
+
+
+post '/users/:id/tweets' do
+
+  user = User.find(session[:id])
+  tweet = Tweet.find(params[:id])
+  if tweet.user != user
+    user.retweets << tweet
+      redirect "/users/#{user.id}"
+    else
+      redirect '/users/:id/tweets'
+  end
 end

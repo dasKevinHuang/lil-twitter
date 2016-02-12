@@ -7,6 +7,7 @@ get '/dashboard' do
   @userfollowers.each do |userfollower|
     userfollower.user.tweets.each do |tweet|
       @tweets << tweet
+    end
   end
   @tweets.sort {|first, second| first.created_at <=> second.created_at }
   if logged_in?

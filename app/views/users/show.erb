@@ -15,7 +15,7 @@
 </div>
 <div class="container bg-primary">
   <p><h2>Tweets</h2></p>
-  
+
   <% @tweets.each do |tweet| %>
       <div class='container bg-success'>
         <a href="users/<%=tweet.user.id%>"><b><%= tweet.user.first_name + " " + tweet.user.last_name %></b> @<%= tweet.user.username %></a>
@@ -28,7 +28,7 @@
         <br>
         <%if tweet.user.id == session[:id]%>
           <!-- Logic for if user owns the tweet -->
-          <form action="/tweets/delete" method="post">
+          <form action="/tweets/<%= tweet.id %>" method="post">
             <input name="_method" type="hidden" value="delete">
             <input type="submit" value="Delete">
           </form>

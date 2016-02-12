@@ -15,11 +15,13 @@ end
 #dsisplay all tweets of user
 get '/users/:id' do
   @user = User.find(params[:id])
+  @tweets = @user.tweets
   erb :'users/show'
 end
 
 #display all followers of user
 get '/users/:id/followers' do
   @user = User.find(params[:id])
+  @followers = @user.followers
   erb :'users/followers'
 end

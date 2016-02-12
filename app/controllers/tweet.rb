@@ -2,6 +2,7 @@
 # To display all tweets of ALL users
 get '/tweets' do
   @tweets = Tweet.all
+  @sorted_tweets = @tweets.sort {|first, second| first.created_at <=> second.created_at }
 
   erb :"/tweets/index"
 end

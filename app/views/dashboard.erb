@@ -1,5 +1,6 @@
 <!-- This page displays the current logged in user's dashboard -->
 <div class='container'>
+
   <p><h1>Dashboard for <%= @user.first_name + " " + @user.last_name %></h1></p>
   <% if @tweets %>
     <% @tweets.each do |tweet| %>

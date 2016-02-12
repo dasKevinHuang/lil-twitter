@@ -1,8 +1,8 @@
 get '/' do
   # Look in app/views/index.erb
 
-# if login?
-#   redirect '/dashboard'
-# end
+if logged_in?
+  redirect '/dashboard'
+end
   erb :'index'
 end

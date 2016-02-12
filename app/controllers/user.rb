@@ -55,3 +55,8 @@ post '/users/:id/tweets' do
       redirect '/users/:id/tweets'
   end
 end
+
+get '/users/:id/following'do
+  @followings = UserFollower.where(follower_id: params[:id])
+  erb :'users/following'
+end

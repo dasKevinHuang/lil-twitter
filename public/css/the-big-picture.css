@@ -11,7 +11,8 @@ body {
 }
 
 .full {
-  background: url(http://placehold.it/1920x1080) no-repeat center center fixed; 
+  /*background: url(http://placehold.it/1920x1080) no-repeat center center fixed; */
+      background: #00ff00 url("apple_monster.png") no-repeat fixed center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

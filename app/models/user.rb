@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+has_many :user_followers
+has_many :tweets
+has_many :followers, through: :user_followers, source: :user
+
 
   def self.authenticate(email, password)
     @user = self.find_by(email: email)

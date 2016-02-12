@@ -5,15 +5,15 @@ end
 post '/sessions' do
   @user = User.authenticate(params[:email], params[:password])
   if @user
-    session['user'] = @user.email
-    redirect "/users/#{@user.id}"
+    login(@user)
+    redirect "/dashboard"
   else
     redirect '/sessions/new'
   end
 end
 
-delete '/sessions/:id' do
-  session['user'] = nil
+delete '/sessions' do
+  logout
   redirect '/'
 end
 

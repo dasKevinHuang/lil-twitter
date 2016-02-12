@@ -4,15 +4,22 @@ end
 
 post '/users' do
   @user = User.create(params[:user])
-  redirect "/"
+  if @user
+    login(@user)
+    redirect "/dashboard"
+  else
+    redirect 'users/new'
+  end
 end
 
-get '/users' do
-  @users = User.all
-  erb :'users/all'
-end
-
+#dsisplay all tweets of user
 get '/users/:id' do
   @user = User.find(params[:id])
   erb :'users/show'
+end
+
+#display all followers of user
+get '/users/:id/followers' do
+  @user = User.find(params[:id])
+  erb :'users/followers'
 end

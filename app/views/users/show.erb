@@ -1,30 +1,39 @@
 <!-- This page displays a user's profile page and their tweets -->
-<div class='container'>
+<div class='container bg-primary'>
   <p><h1><%= @user.first_name + " " + @user.last_name%></h1></p>
   <p><%= @user.email %></p>
   <p><%= @user.username %></p>
   <% if session[:id] == @user.id %>
     <p><a href="/tweets/new">Create New Tweet</a></p>
-    <p><form action="/users/<%= @user.id %>/followers" method="get">
-      <input type="submit" value="My Followers">
-    </form>
+    <p><a href="/users/<%=@user.id%>/following">Following: <%=UserFollower.where(follower:@user).size%></a></p>
+    <p><a href="/users/<%=@user.id%>/followers">Followers: <%=@user.followers.count%></a></p>
     <form action="/sessions" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Logout">
     </form></p>
   <% end %>
 </div>
-<div class="container">
-  <p><h2>My Tweets</h2></p>
+<div class="container bg-primary">
+  <p><h2>Tweets</h2></p>
+  
   <% @tweets.each do |tweet| %>
-    <p><%= tweet.body %>
-      -posted at <%= tweet.created_at.strftime("%l:%M %a %m/%y") %></p>
-    <% if session[:id] == @user.id %>
-      <p><form action="/tweets/<%= tweet.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete Tweet">
-      </form></p>
-    <% end %>
-  <% end %>
+      <div class='container bg-success'>
+        <a href="users/<%=tweet.user.id%>"><b><%= tweet.user.first_name + " " + tweet.user.last_name %></b> @<%= tweet.user.username %></a>
+        <a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a>
+        <form action="/users/<%=tweet.user.id%>/followers" method="POST">
+          <input type="submit" value="Follow this User">
+        </form>
+        <br>
+        tweet: <%=tweet.body%> <a href="#">Retweet</a>
+        <br>
+        <%if tweet.user.id == session[:id]%>
+          <!-- Logic for if user owns the tweet -->
+          <form action="/tweets/delete" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <input type="submit" value="Delete">
+          </form>
+    <%end%>
+      </div>
+  <%end%>
 </div>
 <a href="/users">Show me all the Users</a>

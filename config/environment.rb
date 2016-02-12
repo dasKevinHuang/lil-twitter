@@ -20,6 +20,7 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 # require 'bcrypt'
+require 'kronic'
 
 enable :sessions
 set :session_secret, 'super secret'

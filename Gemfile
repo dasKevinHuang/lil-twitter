@@ -16,6 +16,7 @@ gem 'activerecord', '~>4.1'
 gem 'rake'
 gem 'faker'
 gem 'shotgun'
+gem 'kronic'
 
 group :test do
   gem 'faker'

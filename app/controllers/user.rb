@@ -16,7 +16,7 @@ end
 
 #dsisplay all tweets of user
 get '/users/:id' do
-  @user = User.find(params[:id])
+  @user = User.find(session[:id])
   @tweets = @user.tweets
   erb :'users/show'
 end

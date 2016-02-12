@@ -1,11 +1,11 @@
-#This page displays a user's profile page and their tweets
+<!-- This page displays a user's profile page and their tweets -->
 <div class='container'>
-  <p><h1><%= @user.full_name %></h1></p>
+  <p><h1><%= @user.first_name + " " + @user.last_name%></h1></p>
   <p><%= @user.email %></p>
   <p><%= @user.password %></p>
-</div>
-<p><form action="/sessions/<%= @user.id %>" method="post">
+<p><form action="/sessions" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Logout">
  </form></p>
-<p><a href="/">Return to Homepage</a></p>
+<p><a href="/tweets/new">Create New Tweet</a></p>
+</div>

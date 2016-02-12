@@ -6,8 +6,10 @@ post '/users' do
   @user = User.create(params[:user])
   if @user
     login(@user)
-    redirect "/dashboard"
+    p "dashboard"
+    redirect '/dashboard'
   else
+    p "homepage"
     redirect 'users/new'
   end
 end

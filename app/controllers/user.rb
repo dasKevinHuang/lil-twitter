@@ -27,3 +27,8 @@ get '/users/:id/followers' do
   @followers = @user.followers
   erb :'users/followers'
 end
+
+get '/users' do
+  @users = User.all
+  erb :'users/all'
+end

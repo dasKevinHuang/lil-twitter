@@ -5,15 +5,15 @@
     <% @tweets.each do |tweet| %>
       <div class='container'>
         <span><a href="users/<%=tweet.user.id%>">@<%= tweet.user.username %></a></span>
-      <span><a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a></span>
-      <p><%= tweet.body%></p>
-      <%if tweet.user == @user %>
-        <!-- Logic for if user owns the tweet -->
-        <form action="/tweets/delete" method="post">
-          <input name="_method" type="hidden" value="delete">
-          <input type="submit" value="Delete">
-        </form>
-      <%end%>
+        <span><a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a></span>
+        <p><%= tweet.body%></p>
+        <%if tweet.user == @user %>
+          <!-- Logic for if user owns the tweet -->
+          <form action="/tweets/delete" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <input type="submit" value="Delete">
+          </form>
+        <%end%>
       </div>
     <% end %>
   <% else %>
@@ -21,6 +21,9 @@
       <span>Looks like there aren't any tweets here yet! Why not try posting one now?</span>
     </div>
   <%end%>
+
+  <a href="/tweets">View All Tweets</a>
+
   <p><form action="users/<%= @user.id %>" method="get">
     <input type="submit" value="My Profile"></form></p>
 </div>

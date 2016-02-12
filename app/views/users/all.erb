@@ -1,5 +1,5 @@
 <div class="container">
   <% @users.each do |user| %>
-  <p><%= user.first_name %></p>
+  <p><a href='users/<%= user.id %>'><%= user.username %></a></p>
   <% end %>
 </div>

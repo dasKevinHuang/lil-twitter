@@ -1,4 +1,11 @@
 <!-- This page displays the current logged in user's dashboard -->
 <div class='container'>
 <!--   @user @tweets -->
-  <p><h1><%= @user.first_name %></h1></p>
+<p><h1><%= @user.first_name + " " + @user.last_name %></h1></p>
+  <% @user.followers.each do |follower| %>
+    <p><%= follower.first_name + " " + follower.last_name %></p>
+    <p><%= follower.tweets %></p>
+  <% end %>
+
+  <p><form action="users/<%= @user.id %>" method="get">
+    <input type="submit" value="My Profile"></form></p>

@@ -1,4 +1,3 @@
-
 # Displays tweets of the people that the user is following
 get '/dashboard' do
   @user = User.find_by(id: session[:id])
@@ -16,8 +15,6 @@ get '/dashboard' do
     else
       redirect '/'
     end
-  else
-    redirect '/'
   end
 end
 

@@ -6,7 +6,7 @@ post '/sessions' do
   @user = User.authenticate(params[:username], params[:password])
   if @user
     login(@user)
-    erb :"/dashboard"
+    redirect "/dashboard"
   else
     redirect '/sessions/new'
   end

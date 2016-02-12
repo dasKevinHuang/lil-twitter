@@ -1,6 +1,7 @@
 
 # To display all tweets of ALL users
 get '/tweets' do
+  @user_id = session[:id]
   @tweets = Tweet.all
   @sorted_tweets = @tweets.sort {|first, second| first.created_at <=> second.created_at }
 

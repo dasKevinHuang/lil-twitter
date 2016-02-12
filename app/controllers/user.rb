@@ -32,3 +32,13 @@ get '/users' do
   @users = User.all
   erb :'users/all'
 end
+
+post '/users/:id/followers' do
+  user  = User.find(session[:id])
+  followed_user = User.find(params[:id])
+
+  if followed_user.followers << user
+
+  redirect "/users"
+end
+end

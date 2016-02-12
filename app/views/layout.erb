@@ -19,11 +19,29 @@
   </head>
   <body>
     <% if logged_in? %>
-      <form action="/sessions" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Logout">
-      </form>
-    <% end%>
-    <%= yield %>
+      <nav style="position:fixed">
+        <ul>
+          <li>
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/users/<%=session[:id]%>">Profile</a>
+          </li>
+          <li>
+            <span><a href="/tweets/new">Post a new tweet</a>
+            </span>
+          </li>
+
+          <li>
+            <form action="/sessions" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Logout">
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+        <% end%>
+        <%= yield %>
   </body>
 </html>

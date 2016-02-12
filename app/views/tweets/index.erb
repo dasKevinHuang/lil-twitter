@@ -1,16 +1,27 @@
-
+<div class="container">
 <a href="/sessions">Back to Profile</a>
 
 <h1> Follow Whats Happening On Twitter </h1>
 
 <% @sorted_tweets.each do |each_tweet| %>
 <ul>
- user: <%=each_tweet.user.username %>   <a href="#">Follow this User</a>
+       <div class='container'>
+        <span><a href="users/<%=tweet.user.id%>"><b><%= tweet.user.first_name + " " + tweet.user.last_name %></b> @<%= tweet.user.username %></a></span>
+        <span><a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a></span>
+    <a href="#">Follow this User</a>
 <br>
   tweet: <%=each_tweet.body%> <a href="#">Retweet</a>
 <br>
-
+<%if each_tweet.user.id == session[:id]%>
+          <!-- Logic for if user owns the tweet -->
+          <form action="/tweets/delete" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <input type="submit" value="Delete">
+          </form>
+       </div>
+        <%end%>
 
 
 </ul>
   <% end %>
+</div>

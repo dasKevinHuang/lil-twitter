@@ -22,3 +22,9 @@ post '/tweets' do
     redirect "/tweets/new"
   end
 end
+
+delete '/tweets/:id' do
+  @tweet = Tweet.find(params[:id])
+  @tweet.destroy
+  redirect 'users/show'
+end

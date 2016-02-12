@@ -10,11 +10,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The Big Picture - Start Bootstrap Template</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/the-big-picture.css" rel="stylesheet">
-
-  <title></title>
+    <title>Lil Twitter</title>
+<!--<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/the-big-picture.css" rel="stylesheet">
+-->
 </head>
 <body>
 
@@ -30,20 +29,36 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">Lil Twitter</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                  <%if logged_in? %>
                     <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                       <a href="/users/new">Register</a>
-                    </li>
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/users/<%=session[:id]%>">Profile</a>
+          </li>
+          <li>
+            <a href="/tweets/new">Post a new tweet</a>
+          </li>
+
+          <li>
+            <form action="/sessions" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Logout">
+            </form>
+          </li>
+          <%else%>
+            <li>
+        <a href="/sessions/new">Login</a>
+            </li>
+            <li>
+        <a href="/users/new">Registration</a>
+            </li>
+      <%end%>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -1,20 +1,32 @@
-
+<div class="container">
 <a href="/users/<%=@user_id%>">Back to Profile</a>
 
 <h1 class="text-white"> Follow Whats Happening On Twitter </h1>
 
-<% @sorted_tweets.each do |each_tweet| %>
-<ul class="text-white">
- user: <%=each_tweet.user.username %>   <form class="button_class" action="/users/<%=each_tweet.user.id%>/followers" method="POST">
+<% @sorted_tweets.each do |tweet| %>
+<ul>
+       <div class='container'>
+        <span><a href="users/<%=tweet.user.id%>"><b><%= tweet.user.first_name + " " + tweet.user.last_name %></b> @<%= tweet.user.username %></a></span>
+        <span><a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a></span>
+    <form action="/users/<%=tweet.user.id%>/followers" method="POST">
                                           <input type="submit" value="Follow this User">
-                                        </form>
+    </form>
 <br>
-  tweet: <%=each_tweet.body%> <form action="/users/<%=each_tweet.id%>/tweets" method="POST">
+  tweet: <%=tweet.body%> <form action="/users/<%=tweet.id%>/tweets" method="POST">
       <input type="submit" value="Retweet">
 </form>
-<br>
 
+<br>
+<%if tweet.user.id == session[:id]%>
+          <!-- Logic for if user owns the tweet -->
+          <form action="/tweets/delete" method="post">
+            <input name="_method" type="hidden" value="delete">
+            <input type="submit" value="Delete">
+          </form>
+       </div>
+        <%end%>
 
 
 </ul>
   <% end %>
+</div>

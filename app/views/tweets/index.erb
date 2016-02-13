@@ -5,7 +5,7 @@
 
 <% @sorted_tweets.each do |tweet| %>
 <ul>
-       <div class='container'>
+       <div class='well well-lg'>
         <span><a href="users/<%=tweet.user.id%>"><b><%= tweet.user.first_name + " " + tweet.user.last_name %></b> @<%= tweet.user.username %></a></span>
         <span><a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a></span>
     <form action="/users/<%=tweet.user.id%>/followers" method="POST">

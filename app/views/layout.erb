@@ -40,30 +40,30 @@
 
                     <li>
 
-            <a href="/dashboard">Dashboard</a>
+            <a class="btn btn-primary btn-lg" href="/dashboard">Dashboard</a>
           </li>
           <li>
-            <a href="/tweets">See All Tweets</a>
+            <a class="btn btn-primary btn-lg" href="/tweets">See All Tweets</a>
         </li>
           <li>
-            <a href="/users/<%=session[:id]%>">Profile</a>
+            <a class="btn btn-primary btn-lg" href="/users/<%=session[:id]%>">Profile</a>
           </li>
           <li>
-            <a href="/tweets/new">Post a new tweet</a>
+            <a class="btn btn-primary btn-lg" href="/tweets/new">Post a new tweet</a>
           </li>
 
           <li>
             <form action="/sessions" method="post">
               <input type="hidden" name="_method" value="delete">
-              <input type="submit" value="Logout">
+              <input class="btn btn-primary btn-lg" type="submit" value="Logout">
             </form>
           </li>
           <%else%>
             <li>
-        <a href="/sessions/new">Login</a>
+        <a class="btn btn-primary btn-lg" href="/sessions/new">Login</a>
             </li>
             <li>
-        <a href="/users/new">Registration</a>
+        <a class="btn btn-primary btn-lg" href="/users/new">Registration</a>
             </li>
       <%end%>
                 </ul>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="well well-lg">
   <p><h1>Users I Follow</h1></p>
   <% @followings.each do |following| %>
     <p><a href="/users/<%= following.user.id %>">@<%= following.user.username %></a></p>

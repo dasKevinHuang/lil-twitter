@@ -1,7 +1,7 @@
 <!-- This page displays all the followers of a specific user -->
-<div class="container">
+<div class="well well-lg">
   <p><h1>My Followers</h1></p>
   <% @followers.each do |follower| %>
-    <p><a href="/users/<%= follower.id %>"><%= follower.username %></a></p>
+    <p><a href="/users/<%= follower.id %>">@<%= follower.username %></a></p>
   <% end %>
 </div>

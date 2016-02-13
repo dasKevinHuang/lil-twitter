@@ -1,5 +1,5 @@
 <!-- This page displays a user's profile page and their tweets -->
-<div class='container bg-primary'>
+<div class='well well-lg'>
   <p><h1><%= @user.first_name + " " + @user.last_name%></h1></p>
   <p><%= @user.email %></p>
   <p><%= @user.username %></p>
@@ -13,11 +13,11 @@
     </form></p>
   <% end %>
 </div>
-<div class="container bg-primary">
+<div class="well well-lg">
   <p><h2>Tweets</h2></p>
 
   <% @tweets.each do |tweet| %>
-      <div class='container bg-success'>
+      <div class='well well-lg'>
         <a href="users/<%=tweet.user.id%>"><b><%= tweet.user.first_name + " " + tweet.user.last_name %></b> @<%= tweet.user.username %></a>
         <a href="tweets/<%=tweet.id%>"><%= Kronic.format(tweet.created_at)%></a>
         <form action="/users/<%=tweet.user.id%>/followers" method="POST">
